@@ -3,5 +3,5 @@ SOMB (Sofa Obj to MDD for Blender) est un programme qui permet de traiter des ob
 
 ## Comment utiliser le SOMB:
 
-Il suffit d'executer la commande ./somb dossier 
-On lit alors les fichiers .obj que l'on transforme en un fichier res.mdd utilisable dans blender. 
+Il suffit d'executer la commande ./somb dossier fimg limg 
+On lit alors les fichiers .obj du numéro fimg au numéro limg que l'on transforme en un fichier res.mdd utilisable dans blender. 
