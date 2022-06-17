@@ -83,7 +83,9 @@ int main(int argc,char * argv[]){
 
 		FILE * f1 = fopen(fichier1,"r");
 		fgets(buffer,256,f1);
-		//printf("%s\n",buffer);
-		FILE * f2 = fopen(fichier2,"r"); 
+		printf("%s\n",buffer);
+		FILE * f2 = fopen(fichier2,"r");
+	       	fgets(buffer,256,f2);
+		printf("%s\n",buffer);	
 	}
 }
