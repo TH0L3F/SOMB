@@ -53,23 +53,27 @@ def check_v(frame_name,vp):
     
     if(vp == 0): #Si vp = 0 c'est qu'il a pas encore était défini on le défini donc
         #print(som)
-        return som       
+        return som,ex_obj_t    
     else: #Sinon on vérifie que le nombre de sommets n'a pas changé
         if(vp != som):
             raise Exception('Erreur, le nombre de sommets à changer')
     return som,ex_obj_t
 
+#def floattohex(v):
+    
+#def midendian(tab):
+
 def save(addr_folder="",filepath="", frame_start=0, frame_end=300, fps=25.0):
     
     f = open(filepath, 'wb')  #On créer le fichier en écriture au format binaire
-    numframes = frame_end - frame_start #On définit le nombre total de frame à parcourir lors de la conversion en .mdd
+    numframes = frame_end - frame_start +1 #On définit le nombre total de frame à parcourir lors de la conversion en .mdd
     
     #string contenant le nom du premier fichier à ouvrir
     frame_name = addr_folder+"caduceus_"+str5fromint(frame_start)+".obj"       
     
     #On définit pour la première fois le nombre de sommet de l'objet
     vp=0    
-    vp = check_v(frame_name,vp)
+    vp,ex_obj_t = check_v(frame_name,vp)
     
     # Ecriture de l'entête du fichier .mdd
     #pack(format,v1,v2,...) permet de convertir les données dans le bon format
@@ -77,47 +81,30 @@ def save(addr_folder="",filepath="", frame_start=0, frame_end=300, fps=25.0):
     
     # On écrit le temps d'affichage d'une frame
     f.write(pack(">%df" % (numframes), *[frame / fps for frame in range(numframes)])) # en seconds
-    
+            
     #On enregistre désormais chaques objets un a un   
-    for frame in range(frame_start, frame_end):  # in order to start at desired frame
+    for frame in range(frame_start, frame_end+1):  # in order to start at desired frame
         
         #On créer le string contenant le nom des fichier à ouvrir correspondant à la frame actuel
-        frame_name_1 = addr_folder+"caduceus_"+str5fromint(frame)+".obj"       
-        frame_name_2 = addr_folder+"caduceus_"+str5fromint(frame+1)+".obj"      
-        fobj_1 = open(frame_name_1, 'r')
-        fobj_2 = open(frame_name_2, 'r')
-        print(frame_name_1 + " : " + frame_name_2)
+        frame_name = addr_folder+"caduceus_"+str5fromint(frame)+".obj"          
+        fobj = open(frame_name, 'r')
+        print(frame_name)
         
         #On vérifie que le nombre de sommet n'a pas changé et on cherche leurs positions dans le fichier
-        vp,ex_obj_t = check_v(frame_name_2,vp)
+        vp,ex_obj_t = check_v(frame_name,vp)
         
         #On converti les fichiers en tableaux
-        fobj_1_tab = fobj_1.readlines()
-        fobj_2_tab = fobj_2.readlines()
+        fobj_tab = fobj.readlines()
 
-        sum = 0
         for i in ex_obj_t:
-            for y in range(i[0],i[1]):
-                sum = sum +1
-                #On écrit le résultat sous le bon format dans le fichier
-                #le > pour big endian
-                #le d pour double float (8 octets)
-                #le f pour float (4 octets)
-                coord_1 = fobj_1_tab[y].split(" ")
-                coord_2 = fobj_2_tab[y].split(" ")
-                
-                vx = float(coord_2[1]) - float(coord_1[1])
-                vy = float(coord_2[2]) - float(coord_1[2])
-                vz = float(coord_2[3]) - float(coord_1[3])             
-                
-                """if(y < 50):
-                    print(vx,pack('>f',vx))
-                """
-                    
+            for y in range(i[0],i[1]):             
+                coord = fobj_tab[y].split(" ")
+                vx = float(coord[1])
+                vy = float(coord[2])
+                vz = float(coord[3])
                 f.write(pack('>3f',vz,vy,vx)) #écriture de la variation en x,y et z
                 
-        fobj_1.close()
-        fobj_2.close()
+        fobj.close()
         
     f.close()#On ferme le fichier maintenant qu'il est remplie
     
