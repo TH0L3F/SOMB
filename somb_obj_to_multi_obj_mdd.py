@@ -3,19 +3,13 @@
 
 # <pep8 compliant>
 
-# Contributors: Bill L.Nieuwendorp
+# Contributors: Bill L.Nieuwendorp, Thomas Lefranc
 """
 """
-This script Exports Multiple object to Lightwaves MotionDesigner format.
-
-The .mdd format has become quite a popular Pipeline format<br>
-for moving animations from package to package.
-
-Be sure not to use modifiers that change the number or order of verts in the mesh
+Ce programme permet de convertir un .obj contenant plusieurs objets en objets
+individuelles tous liés à leurs propres fichiers .mdd
 """
 
-#from bpy import bpy #blender associate to python librairie
-#import mathutils
 from struct import pack
      
 def str5fromint(a):
@@ -109,4 +103,4 @@ def save(addr_folder="",filepath="", frame_start=0, frame_end=300, fps=25.0):
     f.close()#On ferme le fichier maintenant qu'il est remplie
     
     #On écrit un message permettant à l'utilisateur de savoir que le fichier a bien était exporter et où
-    print('MDD Exported: %r frames:%d\n' % (filepath, numframes)) 
+    #print('MDD Exported: %r frames:%d\n' % (filepath, numframes)) 
