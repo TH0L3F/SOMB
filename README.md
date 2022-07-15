@@ -14,7 +14,7 @@ La commande à executer pour cela est :
   
 Exemple:
   On peut prendre une dossier C:\\dossier_objet\ contenant les fichiers:
-    cadeuceus_00000.obj
+  >  cadeuceus_00000.obj
     cadeuceus_00001.obj
     cadeuceus_00002.obj
     cadeuceus_00003.obj
