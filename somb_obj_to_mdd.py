@@ -11,7 +11,7 @@ Ce programme permet de transformer une série de .obj en un .mdd
 
 from struct import pack
      
-def str5fromint(a):
+def str5fromint(a): #Créer le nom du fichier
     
     n5 = int(a/10000)
     n4 = int((a-n5*10000)/1000)
@@ -20,7 +20,7 @@ def str5fromint(a):
     n1 = int((a-n5*10000-n4*1000-n3*100-n2*10))
     return str(n5)+str(n4)+str(n3)+str(n2)+str(n1)
 
-def check_v(frame_name,vp):
+def check_v(frame_name,vp): #On vérifie que le nombre de sommets n'a pas changé
     
     #On compte le nombre de sommets
     som = 0;
