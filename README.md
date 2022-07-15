@@ -12,7 +12,7 @@ La commande à executer pour cela est :
  *  frame_end le numéro du second .OBJ que l'on veut utiliser.
  *  fps le nombre d'image par seconde de la simulation.
   
-Exemple:
+> Exemple:
 >  On peut prendre une dossier C:\\dossier_objet\ contenant les fichiers:
 >  *  cadeuceus_00000.obj
 >  *  cadeuceus_00001.obj
