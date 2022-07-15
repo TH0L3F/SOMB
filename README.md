@@ -5,7 +5,7 @@ SOMB (Sofa Obj to MDD for Blender) est un programme python qui permet de traiter
 > Plus spécifiquement il peut traiter une suite d'objet pour en faire un fichier mdd.
 
 La commande à executer pour cela est :
-\n save(addr_folder="",filepath="", frame_start=0, frame_end=300, fps=25.0)
+ save(addr_folder="",filepath="", frame_start=0, frame_end=300, fps=25.0)
  *  addr_folder l'adresse du dossier dans lequel se trouve les fichiers .OBJ.
  *  filepath le nom du fichier .MDD que créer le programme.
  *  frame_start le numéro du premier .OBJ que l'on veut utiliser.
@@ -24,4 +24,4 @@ La commande à executer pour cela est :
 >
 > La commande:
 >   save(addr_folder="C:\\dossier_objet\\",filepath="C:\\", frame_start=1, frame_end=5, fps=25.0)
->   \n Prend les fichiers objets de 1 à 5 pour en faire un fichier MDD à la racine du disque C
+>   <\br> Prend les fichiers objets de 1 à 5 pour en faire un fichier MDD à la racine du disque C
