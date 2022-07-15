@@ -24,4 +24,4 @@ La commande à executer pour cela est :
 >
 > La commande:
 >   save(addr_folder="C:\\dossier_objet\\",filepath="C:\\", frame_start=1, frame_end=5, fps=25.0)
->   <\br> Prend les fichiers objets de 1 à 5 pour en faire un fichier MDD à la racine du disque C
+>   <br\> Prend les fichiers objets de 1 à 5 pour en faire un fichier MDD à la racine du disque C
